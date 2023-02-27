@@ -1,0 +1,320 @@
+@import './variables';
+
+@mixin family--montserrat {
+  font-family: map-get($family, primary), sans-serif;
+}
+@mixin family--notosans {
+  font-family: map-get($family, second), sans-serif;
+}
+
+@mixin p-line-clamp($i) {
+  display: -webkit-box;
+  -webkit-line-clamp: #{$i};
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin uppercase{
+  text-transform: uppercase;
+}
+@mixin italic{
+  font-style: italic;
+}
+
+////////////////////////////////////////////////
+//////////// FONT WEIGHT //////////////////////
+
+@mixin thin{
+  font-weight: 100;
+}
+@mixin extra-light{
+  font-weight: 200;
+}
+@mixin light{
+  font-weight: 300;
+}
+@mixin regular{
+  font-weight: 400;
+}
+@mixin normal{
+  font-weight: 400;
+}
+@mixin medium{
+  font-weight: 500;
+}
+@mixin semi-bold{
+  font-weight: 600;
+}
+@mixin bold{
+  font-weight: 700;
+}
+@mixin extra-bold{
+  font-weight: 800;
+}
+@mixin ultra-bold{
+  font-weight: 900;
+}
+
+//////////// FONT WEIGHT ///////////////////////
+////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////
+//////////// FONT SIZE /////////////////////////
+
+@mixin size($key){
+  @each $idx, $val in map-get($size, #{$key}){
+    @if $idx == default{
+      font-size: $val;
+    }
+    @else{
+      @media (max-width: map-get($media, $idx)){
+        font-size: $val;
+      }
+    }
+  }
+}
+
+@mixin title($key){
+  @each $idx, $val in map-get($title, #{$key}){
+    @if $idx == default{
+      font-size: $val;
+    }
+    @else{
+      @media (max-width: map-get($media, $idx)){
+        font-size: $val;
+      }
+    }
+  }
+}
+
+
+//////////// FONT SIZE ////////////////////////
+////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////
+//////////// Shadow ////////////////////////
+
+@mixin shadow($sd){
+  box-shadow: map-get($shadow, #{$sd});
+}
+
+//////////// Shadow ////////////////////////
+////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////
+//////////// Gradient ////////////////////////
+
+@mixin gradient($gr)
+{
+  background-image: $gr;
+}
+
+//////////// Gradient ////////////////////////
+////////////////////////////////////////////////
+
+////////////////////////////////////////////////
+//////////// color ////////////////////////
+
+@mixin txt($txt)
+{
+  color: map-get($color, #{$txt});
+}
+//////////// color ////////////////////////
+////////////////////////////////////////////////
+
+////////////////////////////////////////////////
+//////////// background ////////////////////////
+
+@mixin bg($bg)
+{
+  background-color: map-get($color, #{$bg});
+}
+
+// @include txt(main);
+//////////// background ////////////////////////
+////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////
+///////////////// BLOCK ////////////////////////
+
+@mixin block($key, $name, $side: -1){
+  @each $idx, $val in map-get($block, #{$key}){
+    @if $side == -1{
+      @if $idx == default{
+        #{$name}: $val;
+      }
+      @else{
+        @media (max-width: map-get($media, $idx)){
+          #{$name}: $val;
+        }
+      }
+    }
+    @else{
+      @if $idx == default{
+        #{$name}: $val $side;
+      }
+      @else{
+        @media (max-width: map-get($media, $idx)){
+          #{$name}: $val $side;
+        }
+      }
+    }
+  }
+}
+
+///////////////// BLOCK ////////////////////////
+////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////
+///////////////// SPACE ////////////////////////
+
+@mixin space($key, $name, $side: '-1'){
+  @each $idx, $val in map-get($space, #{$key}){
+    @if $side == '-1'{
+      @if $idx == default{
+        #{$name}: $val;
+      }
+      @else{
+        @media (max-width: map-get($media, $idx)){
+          #{$name}: $val;
+        }
+      }
+    }
+    @else{
+      @if $idx == default{
+        #{$name}: $val $side;
+      }
+      @else{
+        @media (max-width: map-get($media, $idx)){
+          #{$name}: $val $side;
+        }
+      }
+    }
+  }
+}
+
+///////////////// SPACE ////////////////////////
+////////////////////////////////////////////////
+
+////////////////////////////////////////////////
+///////////////// SECTION ////////////////////////
+
+@mixin section($key, $name, $side: '-1'){
+  @each $idx, $val in map-get($section, #{$key}){
+    @if $side == '-1'{
+      @if $idx == default{
+        #{$name}: $val;
+      }
+      @else{
+        @media (max-width: map-get($media, $idx)){
+          #{$name}: $val;
+        }
+      }
+    }
+    @else{
+      @if $idx == default{
+        #{$name}: $val $side;
+      }
+      @else{
+        @media (max-width: map-get($media, $idx)){
+          #{$name}: $val $side;
+        }
+      }
+    }
+  }
+}
+
+///////////////// SECTION ////////////////////////
+////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////
+/////////////////////////MEDIA ///////////////////
+
+@mixin rp($canvas) {
+  @media (max-width: map-get($media, #{$canvas})){
+    @content;
+  }
+}
+
+/////////////////////////MEDIA ///////////////////
+//////////////////////////////////////////////////
+
+
+@mixin absoluteCenter($direction: 'left') {
+  position: absolute;
+
+  @if $direction == 'left' {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @if $direction == 'top' {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  @if $direction == 'both' {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin mobile-s {
+  @media only screen and (max-width: $mobile-s) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: $tablet) {
+    @content;
+  }
+}
+@mixin tablet-s {
+  @media only screen and (max-width: $tablet-s) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media only screen and (max-width: $large) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (max-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media only screen and (max-width: $laptop) {
+    @content;
+  }
+}
+
+@mixin maxWidth($maxwidth) {
+  @media only screen and (max-width: $maxwidth) {
+    @content;
+  }
+}
+
+@mixin maxheight($maxheight) {
+  @media only screen and (max-height: $maxheight) {
+    @content;
+  }
+}

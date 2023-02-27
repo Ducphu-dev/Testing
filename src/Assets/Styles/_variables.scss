@@ -1,0 +1,42 @@
+@import './fonts';
+
+
+$family: (
+  primary: 'Montserrat',
+  second: "oto+Sans+KR"
+);
+
+$montserrat: 'Montserrat', sans-serif;
+
+$header-height: 72px;
+
+$color: (
+  // theme
+  main: #111111,
+  //color
+  gray-1: #f1f2f5,
+  black-1: #040404,
+  red-1: #ff2400,
+  // required
+  b: #000,
+  w: #fff,
+  x: #f6f6f6,
+  b-op: rgba(0, 0, 0, 0.8),
+  // notification
+);
+
+$bg-lang-active: #ccee5d;
+$white: #fff;
+$black: #000;
+$bg-color: #1b0080;
+
+$color-text: #99dd6e;
+
+$mobile-s: 350px;
+$mobile: 415px;
+$tablet: 768px;
+$tablet-s: 600px;
+$large: 1024px;
+$desktop: 1400px;
+$laptop: 1660px;
+///////////////////// PAGE ////////////////////////////
